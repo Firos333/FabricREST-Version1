@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <label for="loom_no">Loom No.:</label><br>
+        <input type="text" id="loom_no" name="loom_no"><br>
+        <label for="piece_no">Piece No.:</label><br>
+        <input type="text" id="piece_no" name="piece_no"><br>
+        <label for="set_no">Set No.:</label><br>
+        <input type="text" id="set_no" name="set_no"><br>
+        <label for="beam_no">Beam No.:</label><br>
+        <input type="text" id="beam_no" name="beam_no"><br>
+        
+        <br><br><input type="submit" value="Save and continue"></br>
+
+
+        {% for message in messages%}
+            <h6> {{message}}</h6>
+        {% endfor%}
+      </form>
+</body>
+</html>

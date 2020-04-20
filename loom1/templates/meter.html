@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <H2>welcome... good day</H2>
+    <form action="meter" method="POST">
+        {% csrf_token %}
+        <label for="meter">Meter readings:</label><br>
+        <input type="text" id="meter" name="meter"><br>
+        <br><br><input type="submit" value="Save report" name="save"><br><br>
+        
+        <br><br><input type="submit" value="Submit" name="submit"><br><br>
+
+        <div class="d-flex justify-content-center links">
+           Go to Weaver Fault   <a href="weaver">click here</a>
+        </div>
+
+        <div class="d-flex justify-content-center links">
+            Go to Sizing Fault   <a href="sizing">click here</a>
+         </div>
+         <div class="d-flex justify-content-center links">
+            Go to Yawn Fault   <a href="yawn">click here</a>
+         </div>
+
+        {% for message in messages%}
+            <h4> {{message}}</h4>
+        {% endfor%}
+      </form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{% load static %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yawn fault</title>
+</head>
+<body>
+    <form action="yawn" method="POST">
+        <H2>Yawn Fault</H2>
+        {% csrf_token %}
+        <input type="submit" name="cm" value="cm" />
+        <input type="submit" name="cwp" value="cwp" />
+        <br><br><input type="submit" name="undo" value="UNDO"></br>
+        <br><br><input type="submit" name="back" value="BACK"></br>
+
+
+        {% for message in messages%}
+            <h6> {{message}}</h6>
+        {% endfor%}
+      </form>
+</body>
+</html>

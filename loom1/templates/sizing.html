@@ -1,0 +1,28 @@
+{% load static %}
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sizing Fault</title>
+</head>
+<body>
+    <form action="sizing" method="POST">
+        <H2>sizing Fault</H2>
+        {% csrf_token %}
+        <input type="submit" name="sos" value="sos" />
+        <input type="submit" name="sv" value="sv" />
+        <br><br><input type="submit" name="undo" value="UNDO"></br>
+      
+        <br><br><input type="submit" name="back" value="BACK"></br>
+
+
+        {% for message in messages%}
+            <h6> {{message}}</h6>
+        {% endfor%}
+      </form>
+</body>
+</html>
