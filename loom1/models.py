@@ -45,6 +45,8 @@ class MasterTable(models.Model):
     sv_count = models.IntegerField(default=0)
     date_modified = models.DateField(auto_now=True)
     time_modified = models.TimeField(auto_now=True)
+    time_date = models.DateTimeField(auto_now=True)
+
 
 class FaultTable(models.Model):
     Unique_id = models.CharField(max_length =50,default=0)
@@ -53,5 +55,6 @@ class FaultTable(models.Model):
     fault = models.CharField(max_length =50,default=0)
     date_modified = models.DateField(auto_now=True)
     time_modified = models.TimeField(auto_now=True)
+    time_date = models.DateTimeField(auto_now=True)
     def __str__(self):
         return self.meter

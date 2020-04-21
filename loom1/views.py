@@ -43,16 +43,16 @@ def meter(request):
         messages.info(request,'Thanks, your meter log updated')
         return redirect('meter')
     elif "save" in request.POST:
-        maxx=FaultTable.objects.aggregate(Max('meter'))
+        maxx=FaultTable.objects.filter(Unique_id=Unique_id).aggregate(Max('meter'))
         y=maxx.get("meter__max")
-        for x in range (1,y):
+        for x in range (1,y+1):
             meter=x
-            wdr_count = FaultTable.objects.filter(meter=x, fault='wdr').count()
-            wdt_count = FaultTable.objects.filter(meter=x, fault='wdt').count()
-            cm_count = FaultTable.objects.filter(meter=x, fault='cm').count()
-            cwp_count = FaultTable.objects.filter(meter=x, fault='cwp').count()
-            sos_count = FaultTable.objects.filter(meter=x, fault='sos').count()
-            sv_count = FaultTable.objects.filter(meter=x, fault='sv').count()
+            wdr_count = FaultTable.objects.filter(meter=x,Unique_id=Unique_id, fault='wdr').count()
+            wdt_count = FaultTable.objects.filter(meter=x, Unique_id=Unique_id,fault='wdt').count()
+            cm_count = FaultTable.objects.filter(meter=x,Unique_id=Unique_id, fault='cm').count()
+            cwp_count = FaultTable.objects.filter(meter=x,Unique_id=Unique_id, fault='cwp').count()
+            sos_count = FaultTable.objects.filter(meter=x,Unique_id=Unique_id, fault='sos').count()
+            sv_count = FaultTable.objects.filter(meter=x, Unique_id=Unique_id,fault='sv').count()
             second=MasterTable(wdr_count=wdr_count,wdt_count=wdt_count,cm_count=cm_count,cwp_count=cwp_count,sos_count=sos_count,sv_count=sv_count,Unique_id=Unique_id,meter=meter)
             second.save()
         messages.info(request,'report saved succussfully')
